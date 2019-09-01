@@ -1,0 +1,30 @@
+server:
+  port: 8091
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+spring:
+  application:
+    name: cosumer
+
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+    UserClient#getbb(String,String):
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 1000
+
+ribbon:
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
